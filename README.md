@@ -1,13 +1,94 @@
 
+<h1>Implimenting Load balancers With  Nginx</h1>	
 
 
-**Implimenting Load balancers With  Nginx**
+
+
+
+
+**Step 1**
+
+
+**Provissioning EC2 instance**
 
 -  Created an ubuntu instance in Aws 
 
 ![Alt text](Images/instance.png)
 
-- Added inbound rule to allow access to port 8080
+
+**Step 2**
+
+**Inbound Rule**
+
+
+- Added inbound rule to allow access to port 8000
 
 
 ![Alt text](Images/rule.png)
+
+
+-  With Termius, I connected successfully to my EC2 ubuntu instance
+
+![Alt text](Images/termiusConnection.png)
+
+
+
+
+- With **sudo apt update**, I updated my ubunu instance 
+
+
+![Alt text](Images/update.png)
+
+
+**Step 3**
+
+**Installing Apache2 webserver** 
+
+-  With **sudo apt install apache2 -y**. I installed apache2 webserver
+
+
+![Alt text](Images/apache2installed.png)
+
+- With this command,   <mark>systemctl status apache2</mark>, I checked to see if apache2 is installed and running.
+
+![Alt text](Images/apacherunning.png)
+
+**Step 4**
+
+**Configuring Apache to serve a page showing its public Ip address**
+
+-  I configured apache to serve a content on port 8000 by using nano command to edit **ports.conf** file in **etc/apache2/ports.conf** using super user privilage.
+
+![Alt text](Images/portadded.png)
+
+-  With super user privilages, I used nano command to edit **000-default.conf** file and changed port 80 to **port 8000**. The file is located in **etc/apache2/site-available/000-default.conf**.
+
+![Alt text](Images/00edit.png)
+
+-  Restarted apache with **systemctl reload apache2** for changes to take effect.
+
+
+
+
+
+<h1>Creating my new html file</h1>
+
+
+- In **var/www/html** folder, I created index.html and edited it using nano command to paste the code to show the public ip address
+
+
+
+![Alt text](Images/htmlcode.png)
+
+
+- With sudo chown **www-data:www-data ./index.html**, i changed index.html ownership
+
+![Alt text](Images/editedInd.png)
+
+-  I restarted apache2 with **sudo systemctl restart apache2**
+
+
+- In my web browser, I typed in http://54.90.200.130:8000/ and the following page came up:
+
+![Alt text](Images/webpage.png)
+
