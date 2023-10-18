@@ -121,7 +121,7 @@
 
   ![Alt text](Images/loadfileconf.png)
 
--  With nano command, I pasted the required code in loadbalancer.conf and edited it with the required parameters as shown bellow. 
+-  With **nano** command, I pasted the loadbalancer code in loadbalancer.conf and added my apache server ip address and port number and also added my loadbalancer ip address as shown bellow. 
 
     ![Alt text](Images/loadbalnceredited.png)
 
