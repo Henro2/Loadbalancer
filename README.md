@@ -9,9 +9,9 @@
 **Step 1**
 
 
-**Provissioning EC2 instance**
+**Provissioning EC2 instance called myapcheserver**
 
--  Created an ubuntu instance in Aws 
+-  Created an ubuntu instance in Aws called myapacheserver
 
     ![Alt text](Images/instance.png)
 
@@ -27,14 +27,14 @@
    ![Alt text](Images/rule.png)
 
 
--  With Termius, I connected successfully to my EC2 ubuntu instance
+-  With Termius, I connected successfully to myapacheserver
 
     ![Alt text](Images/termiusConnection.png)
 
 
 
 
-- With **sudo apt update**, I updated my ubunu instance 
+- With **sudo apt update**, I updated it
 
 
    ![Alt text](Images/update.png)
@@ -100,7 +100,7 @@
 **Configuring Nginx as Load Balancer**
 
 
--  I provissioned another ubuntu Ec2 instance called Nginxload.
+-  I provissioned another ubuntu Ec2 instance called Loadbalancer.
 
 
 
@@ -126,6 +126,35 @@
     ![Alt text](Images/loadbalnceredited.png)
 
     ![Alt text](loadbalnceredited2png.png)
+
+    
+
+
+
+
+  
+
+-  To prevent nginx loadbalancer from loading its default config on port 80 which will load nginx default page, I changed the port to an unknown port which is not added in the inboud rule.  This activated my new configuration file which will listen on port 80 
+
+
+
+
+
+-  using this command, **Curl localhost**, loaded my apache server content as shown bellow: 
+
+  ![Alt text](Images/curlloadbalancer.png)
+
+
+  -  Using the public ip address of myloadbalancer in my browser, it opened my apache server content.
+
+![Alt text](Images/loadbalanceip.png)
+
+
+
+**Project completed** 
+
+
+  
 
 
     
