@@ -1,0 +1,44 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                // Check out the code from your version control system
+                checkout scm
+            }
+        }
+
+        stage('Build') {
+            steps {
+                // Perform the build (replace 'your_build_command' with the actual build command)
+                sh 'your_build_command'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                // Run tests (replace 'your_test_command' with the actual test command)
+                sh 'your_test_command'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                // Deploy the application (replace 'your_deploy_command' with the actual deploy command)
+                sh 'your_deploy_command'
+            }
+        }
+    }
+
+    post {
+        success {
+            // Actions to be performed after a successful build
+            echo 'Build and deployment successful!'
+        }
+        failure {
+            // Actions to be performed after a failed build
+            echo 'Build or deployment failed. Please check the logs for details.'
+        }
+    }
+}
